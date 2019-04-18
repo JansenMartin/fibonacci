@@ -5,8 +5,25 @@
 # ....
 # e.g. 6th fibonacci number is 8
 
-# Time complexity: ?
-# Space complexity: ?
+# Time complexity: Linear or O(n), where n is the input
+# Space complexity: Constant or O(1), because additional space doesn't rely on the input
 def fibonacci(n)
-  raise NotImplementedError
+  raise ArgumentError if n == nil || n < 0
+
+  return 0 if n == 0
+  return 1 if n == 1
+
+  fibonacci = 0
+
+  first_number = 0
+  second_number = 1
+
+  (n - 1).times do
+    fibonacci = first_number + second_number
+
+    first_number = second_number
+    second_number = fibonacci
+  end
+
+  return fibonacci
 end
